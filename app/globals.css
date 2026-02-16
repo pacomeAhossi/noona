@@ -1,26 +1,223 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Couleur principale  */
+    --primary: oklch(0.4539 0.1049 274.13);
+    --primary-foreground: oklch(1 0 0); /* Blanc pour le texte sur primary */
+
+    /* Variantes de la couleur primaire */
+    --primary-normal: oklch(0.7581 0.0755 274.78);
+    --primary-hover: oklch(0.7317 0.0733 275.18);
+
+    /* Couleur secondaire pour les accents */
+    --secondary: oklch(0.2538 0.0446 248.86);
+    --secondary-foreground: oklch(1 0 0); /* Blanc */
+
+    /* COULEURS DE FOND*/
+    /* Fond principal de l'application */
+    --background: oklch(1 0 180);
+    --foreground: oklch(0.7757 0 89.88);
+    /* --background: oklch(0.9702 0 0);  #F5F5F5  */
+    /* --foreground: oklch(0.2538 0.0446 248.86);  */
+
+    /* COULEURS NEUTRES */
+    /* Palette de gris */
+    --neutral-light: oklch(0.9702 0 0);
+    --neutral-normal: oklch(0.8525 0 89.88);
+    --neutral-dark: oklch(0.7757 0 89.88);
+    --neutral-dark-hover: oklch(0.7196 0 89.88);
+    --darker: oklch(0.5997 0 89.88);
+
+    /* COMPOSANTS UI */
+    /* Cartes */
+    --card: oklch(1 0 0); /* Blanc pur */
+    --card-foreground: oklch(0.2538 0.0446 248.86);
+
+    /* Popovers et menus déroulants */
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.2538 0.0446 248.86);
+
+    /* Éléments atténués (désactivés, secondaires) */
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.7757 0 89.88);
+
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.2538 0.0446 248.86);
+
+    /*ÉTATS ET INTERACTIONS*/
+    /* Actions destructives (supprimer) */
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(1 0 0);
+
+    /* Bordures */
+    --border: oklch(0.922 0 0);
+
+    /* Champs de saisie */
+    --input: oklch(0.922 0 0);
+
+    /* Focus ring (contour de focus) */
+    --ring: oklch(0.4539 0.1049 274.13); /* couleur primary */
+
+    /* GRAPHIQUES ET VISUALISATIONS*/
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+  }
+
+  .dark {
+    /* COULEURS PRIMAIRES */
+    --primary: oklch(0.7581 0.0755 274.78); /* Plus claire en mode sombre */
+    --primary-foreground: oklch(0.1 0 0); /* Texte sombre sur primary clair */
+
+    --primary-normal: oklch(0.7581 0.0755 274.78);
+    --primary-hover: oklch(0.8 0.08 274.78); /* Plus lumineux au hover */
+
+    /*COULEURS SECONDAIRE*/
+    --secondary: oklch(0.35 0.05 248.86); /* Légèrement plus claire */
+    --secondary-foreground: oklch(0.985 0 0);
+
+    --background: oklch(0.2 0 0); /* Fond sombre */
+    --foreground: oklch(0.985 0 0); /* Texte clair */
+
+    /* COULEURS NEUTRES */
+    --neutral-light: oklch(0.3 0 0);
+    --neutral-normal: oklch(0.5 0 0);
+    --neutral-dark: oklch(0.7 0 0);
+    --neutral-dark-hover: oklch(0.75 0 0);
+    --darker: oklch(0.15 0 0);
+
+    /*COMPOSANTS UI*/
+    --card: oklch(0.25 0 0);
+    --card-foreground: oklch(0.985 0 0);
+
+    --popover: oklch(0.25 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+
+    --muted: oklch(0.3 0 0);
+    --muted-foreground: oklch(0.7 0 0);
+
+    --accent: oklch(0.3 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+
+    --destructive: oklch(0.5 0.2 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+
+    --border: oklch(0.3 0 0);
+    --input: oklch(0.3 0 0);
+    --ring: oklch(0.7581 0.0755 274.78);
+
+    /* ===== GRAPHIQUES ===== */
+    --chart-1: oklch(0.7 0.25 41.116);
+    --chart-2: oklch(0.65 0.15 184.704);
+    --chart-3: oklch(0.5 0.1 227.392);
+    --chart-4: oklch(0.85 0.2 84.429);
+    --chart-5: oklch(0.8 0.2 70.08);
+  }
+
+  /* Configuration globale */
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Amélioration de l'anti-aliasing pour les polices */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  /*POLICES */
+  --font-family-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro";
+
+  /* --font-size-xs: 0.8125rem; 
+  --font-size-sm: 0.875rem; 
+  --font-size-base: 0.9375rem; 
+  --font-size-md: 1rem; 
+  --font-size-lg: 1.0625rem; 
+  --font-size-xl: 1.125rem; 
+  --font-size-2xl: 1.25rem; 
+  --font-size-3xl: 1.375rem; 
+  --font-size-display: 3.4375rem;  */
+
+  /* Line heights pour chaque taille */
+  /* --line-height-xs: 1.4;
+  --line-height-sm: 1.5;
+  --line-height-base: 1.5;
+  --line-height-md: 1.5;
+  --line-height-lg: 1.5;
+  --font-size-xl--line-height: 1.6;
+  --line-height-2xl: 1.6;
+  --line-height-3xl: 1.6;
+  --line-height-display: 1.2; */
+
+  /*COULEURS - MAPPING VERS LES VARIABLES CSS*/
+
+  /* Couleurs de base */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Couleurs primaires */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-normal: var(--primary-normal);
+  --color-primary-hover: var(--primary-hover);
+
+  /* Couleurs secondaires */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* Couleurs neutres */
+  --color-neutral-light: var(--neutral-light);
+  --color-neutral-normal: var(--neutral-normal);
+  --color-neutral-dark: var(--neutral-dark);
+  --color-neutral-dark-hover: var(--neutral-dark-hover);
+  --color-darker: var(--darker);
+
+  /* Composants UI */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* États */
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  /* Formulaires */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Graphiques */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+@layer utilities {
+  /* Utilitaire pour masquer les scrollbars tout en gardant le scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
