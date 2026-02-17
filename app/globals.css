@@ -3,12 +3,12 @@
 @layer base {
   :root {
     /* Couleur principale  */
-    --primary: oklch(0.4539 0.1049 274.13);
-    --primary-foreground: oklch(1 0 0); /* Blanc pour le texte sur primary */
+    --primary: oklch(0.4558 0.112 272.39);
+    --primary-foreground: oklch(1 0 180); /* Blanc pour le texte sur primary */
 
     /* Variantes de la couleur primaire */
-    --primary-normal: oklch(0.7581 0.0755 274.78);
-    --primary-hover: oklch(0.7317 0.0733 275.18);
+    --primary-normal: oklch(0.5589 0.1413 272.01);
+    --primary-hover: oklch(0.5182 0.13029 272.4028);
 
     /* Couleur secondaire pour les accents */
     --secondary: oklch(0.2538 0.0446 248.86);
@@ -17,17 +17,15 @@
     /* COULEURS DE FOND*/
     /* Fond principal de l'application */
     --background: oklch(1 0 180);
-    --foreground: oklch(0.7757 0 89.88);
-    /* --background: oklch(0.9702 0 0);  #F5F5F5  */
-    /* --foreground: oklch(0.2538 0.0446 248.86);  */
+    --foreground: oklch(0.5693 0 191.31);
 
     /* COULEURS NEUTRES */
     /* Palette de gris */
-    --neutral-light: oklch(0.9702 0 0);
-    --neutral-normal: oklch(0.8525 0 89.88);
-    --neutral-dark: oklch(0.7757 0 89.88);
+    --neutral-light: oklch(0.9551 0 170.54);
+    --neutral-normal: oklch(0.6993 0 180);
+    --neutral-dark: oklch(0.5693 0 191.31);
     --neutral-dark-hover: oklch(0.7196 0 89.88);
-    --darker: oklch(0.5997 0 89.88);
+    --darker: oklch(0.3368 0 180);
 
     /* COMPOSANTS UI */
     /* Cartes */
@@ -125,6 +123,7 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-family: var(--font-satoshi);
   }
 
   /* Amélioration de l'anti-aliasing pour les polices */
@@ -136,29 +135,8 @@
 
 @theme {
   /*POLICES */
-  --font-family-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro";
-
-  /* --font-size-xs: 0.8125rem; 
-  --font-size-sm: 0.875rem; 
-  --font-size-base: 0.9375rem; 
-  --font-size-md: 1rem; 
-  --font-size-lg: 1.0625rem; 
-  --font-size-xl: 1.125rem; 
-  --font-size-2xl: 1.25rem; 
-  --font-size-3xl: 1.375rem; 
-  --font-size-display: 3.4375rem;  */
-
-  /* Line heights pour chaque taille */
-  /* --line-height-xs: 1.4;
-  --line-height-sm: 1.5;
-  --line-height-base: 1.5;
-  --line-height-md: 1.5;
-  --line-height-lg: 1.5;
-  --font-size-xl--line-height: 1.6;
-  --line-height-2xl: 1.6;
-  --line-height-3xl: 1.6;
-  --line-height-display: 1.2; */
+  --font-satoshi: "var(--font-satoshi), system-ui, sans-serif ";
+  --font-sans: "Geist Mono", monospace;
 
   /*COULEURS - MAPPING VERS LES VARIABLES CSS*/
 

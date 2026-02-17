@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { satoshi } from "./fonts";
 import "./globals.css";
 import { Header } from "./components/layout/Header";
 
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     "point of sale",
     "digital cashier",
   ],
-  authors: [{ name: "Noona Kasir" }],
+  authors: [{ name: "Pacôme AHOSSI" }],
   openGraph: {
     title: "Noona Kasir - Digital Cashier",
     description:
@@ -41,9 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
+      <body className={`${satoshi.variable}  antialiased `}>
         <Header />
         <main>{children}</main>
       </body>
