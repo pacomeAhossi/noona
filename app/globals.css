@@ -29,7 +29,7 @@
 
     /* COMPOSANTS UI */
     /* Cartes */
-    --card: oklch(1 0 0); /* Blanc pur */
+    --card: oklch(0.9702 0 180); /*  #F5F5F5 */
     --card-foreground: oklch(0.2538 0.0446 248.86);
 
     /* Popovers et menus déroulants */
@@ -130,6 +130,7 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 }
 

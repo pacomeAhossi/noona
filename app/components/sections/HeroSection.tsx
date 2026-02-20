@@ -33,7 +33,7 @@ const listPartners: Partners[] = [
 
 export default function HeroSection() {
   return (
-    <section id="#home">
+    <section id="home" className="min-h-[50vh]  ">
       <div className="container m-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-2xl md:text-3xl lg:text-5xl text-darker font-black capitalize leading-tight max-w-3xl mx-auto text-center text-pretty">
@@ -63,9 +63,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-6xl">
-          <div className="px-4">
-            <div className="flex items-center gap-4 md:justify-between flex-wrap ">
+        <div className="md:max-w-5xl mx-auto">
+          <div className="px-4 ">
+            <div className="flex items-center gap-4 md:justify-between flex-wrap">
               {listPartners.map((partner) => (
                 <div key={partner.name} className="flex gap-2 items-center">
                   {/* Logo */}
@@ -84,6 +84,19 @@ export default function HeroSection() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+          {/* image dashboard centré */}
+          <div className="relative  z-10  -mt-27.5 md:-mt-57.5 lg:-mt-84.75 translate-y-1/2  ">
+            <div className="rounded-2xl overflow-hidden p-4">
+              <Image
+                src="/assets/img/dashboard.png"
+                width={952}
+                height={678}
+                alt="dashboard noona aperçu"
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
