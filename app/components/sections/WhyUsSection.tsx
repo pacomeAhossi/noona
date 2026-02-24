@@ -34,7 +34,7 @@ export default function WhyUsSection() {
   ];
 
   return (
-    <section className="relative bg-card py-20 md:py-28 lg:py-44">
+    <section id="why-us" className="relative bg-card py-20 md:py-28 lg:py-44">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="bg-background p-7 md:p-10 lg:p-15 rounded-3xl">
