@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { BenefitsCarousel } from "../composite/BenefitsCarousel";
 import { Button } from "../ui/Button";
@@ -47,6 +49,7 @@ export default function WhyUsSection() {
                     width={347}
                     height={602}
                     alt="Mobile app interface"
+                    className="w-full h-auto max-w-[347px] "
                   />
                 </div>
               </div>

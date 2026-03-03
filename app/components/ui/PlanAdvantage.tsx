@@ -17,7 +17,13 @@ export default function PlanAdvantage({
           bgColor === "primary" ? "bg-primary-normal" : "bg-[#D9D9D9] "
         }`}
       >
-        <Zap size={12} fill="white" stroke="white" color="white" />
+        <Zap
+          size={12}
+          className="w-full"
+          fill="white"
+          stroke="white"
+          color="white"
+        />
       </div>
       {/* fonctionnalité */}
       <p className="text-base lg:text-lg text-darker font-medium">

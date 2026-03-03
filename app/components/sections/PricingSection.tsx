@@ -240,7 +240,7 @@ export default function PricingSection() {
           </div>
           <div className="w-full mt-5 lg:mt-10 px-6 md:px-0 lg:px-4">
             {/* Grid pour afficher les plans de forfait */}
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            <div className="grid grid-cols-1 gap-8 md:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
               {plansList.map((plan) => (
                 <PlanCard key={plan.planTitle} plan={plan} />
               ))}

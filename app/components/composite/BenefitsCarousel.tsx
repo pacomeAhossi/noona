@@ -1,5 +1,4 @@
 "use client";
-
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import BenefitCard from "./BenefitCard";
@@ -15,38 +14,65 @@ interface Benefit {
 interface BenefitCarouselProps {
   benefits: Benefit[];
 }
+const CAROUSEL_OPTIONS = {
+  align: "start",
+  loop: false,
+  skipSnaps: false,
+  slidesToScroll: 1,
+} as const;
 
 export function BenefitsCarousel({ benefits }: BenefitCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
-    slidesToScroll: 1,
-    dragFree: false,
-    loop: false,
-    skipSnaps: false,
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(CAROUSEL_OPTIONS);
   // State pour désactiver le bouton
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
 
+  // const onSelect = useCallback(() => {
+  //   if (!emblaApi) return;
+  //   setCanScrollPrev(emblaApi.canScrollPrev());
+  //   setCanScrollNext(emblaApi.canScrollNext());
+  // }, [emblaApi]);
+
+  // // On écoute le changement des slides
+  // useEffect(() => {
+  //   if (!emblaApi) return;
+
+  //   requestAnimationFrame(() => {
+  //     onSelect();
+  //   });
+  //   emblaApi.on("select", onSelect);
+  //   emblaApi.on("reInit", onSelect);
+
+  //   return () => {
+  //     emblaApi.off("select", onSelect);
+  //     emblaApi.off("reInit", onSelect);
+  //   };
+  // }, [emblaApi, onSelect]);
+
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setCanScrollPrev(emblaApi.canScrollPrev());
-    setCanScrollNext(emblaApi.canScrollNext());
+
+    const canPrev = emblaApi.canScrollPrev();
+    const canNext = emblaApi.canScrollNext();
+
+    // On utilise la fonction de mise à jour pour comparer l'ancienne valeur
+    setCanScrollPrev((prev) => (prev !== canPrev ? canPrev : prev));
+    setCanScrollNext((prev) => (prev !== canNext ? canNext : prev));
   }, [emblaApi]);
 
-  // On écoute le changement des slides
   useEffect(() => {
     if (!emblaApi) return;
 
-    requestAnimationFrame(() => {
-      onSelect();
-    });
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
+
+    // On attend la fin du cycle de rendu actuel pour mettre à jour les boutons
+    const timeout = setTimeout(onSelect, 0);
 
     return () => {
       emblaApi.off("select", onSelect);
       emblaApi.off("reInit", onSelect);
+      clearTimeout(timeout);
     };
   }, [emblaApi, onSelect]);
 

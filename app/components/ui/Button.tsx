@@ -28,6 +28,7 @@ export function Button({
     whitespace-nowrap
     font-medium text-lg
     transition-all duration-200
+    cursor-pointer
     disabled:opacity-50 disabled:cursor-not-allowed
     focus:outline-none focus:ring-2 focus:ring-offset-2
   `;
